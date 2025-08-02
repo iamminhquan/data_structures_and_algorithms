@@ -33,6 +33,10 @@
 *.lib
 
 # Executables
+./searching_algorithms/*.exe
+# ./array/*.exe
+# ./singly_linked_list/*.exe
+# ./vector_and_pair/*.exe
 *.exe
 *.out
 *.app
