@@ -2,19 +2,16 @@
 #include <iostream>
 #include <vector>
 
-int recursive_binary_search(std::vector<int> vector, int left_boundary,
-                            int right_boundary, int target) {
+int recursive_binary_search(std::vector<int> vector, int left_boundary, int right_boundary,
+                            int target) {
   if (left_boundary > right_boundary) {
     return -1;
   }
   int middle = left_boundary + (right_boundary - left_boundary) / 2;
-  if (vector[middle] == target) {
-    return middle;
-  } else if (vector[middle] < target) {
-    return recursive_binary_search(vector, middle + 1, right_boundary, target);
-  } else {
-    return recursive_binary_search(vector, left_boundary, middle - 1, target);
-  }
+  return vector[middle] == target ? middle
+         : vector[middle] < target
+             ? recursive_binary_search(vector, middle + 1, right_boundary, target)
+             : recursive_binary_search(vector, left_boundary, middle - 1, target);
 }
 
 int main(void) {
@@ -30,7 +27,6 @@ int main(void) {
   }
   int target;
   std::cin >> target;
-  std::cout << recursive_binary_search(vector, 0, vector.size() - 1, target)
-            << '\n';
+  std::cout << recursive_binary_search(vector, 0, length - 1, target) << '\n';
   return 0;
 }
